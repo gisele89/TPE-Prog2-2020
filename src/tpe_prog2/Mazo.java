@@ -1,3 +1,4 @@
+package tpe_prog2;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -11,7 +12,7 @@ public class Mazo {
 
 	public ArrayList<Carta> getCartas() {
 		ArrayList<Carta> cartasCopia = new ArrayList<Carta>(); 
-		cartasCopia = (ArrayList)cartas.clone(); 
+		cartasCopia = (ArrayList<Carta>)cartas.clone(); 
 		return cartasCopia;
 	}
 

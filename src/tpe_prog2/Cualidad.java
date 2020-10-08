@@ -1,3 +1,4 @@
+package tpe_prog2;
 
 public class Cualidad {
 	private String nombre;

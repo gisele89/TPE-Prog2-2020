@@ -1,4 +1,4 @@
-
+package tpe_prog2;
 public class MainTPE2020 {
 
 	public static void main(String[] args) {
