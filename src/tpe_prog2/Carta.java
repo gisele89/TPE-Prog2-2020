@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Carta {
 	private String nombre;
 	private ArrayList<Cualidad>cualidades;
+	
 	public Carta(String nombre) {
 		this.nombre = nombre;
 		cualidades=new ArrayList<>();

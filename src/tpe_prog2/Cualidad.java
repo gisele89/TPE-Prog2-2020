@@ -3,6 +3,7 @@ package tpe_prog2;
 public class Cualidad {
 	private String nombre;
 	private double valor;
+	
 	public Cualidad(String nombre, double valor) {
 		this.nombre = nombre;
 		this.valor = valor;
