@@ -41,15 +41,6 @@
       }
     },
     {
-      "nombre": "Helicoptero",
-      "atributos": {
-        "envergadura": 196,
-        "peso": 99,
-        "capacidad": 830,
-        "velocidad": 340
-      }
-    },
-    {
       "nombre": "Doctor Fate",
       "atributos": {
         "altura": 200,
@@ -120,7 +111,7 @@
       }
     },
     {
-      "nombre": "Faraón dorado",
+      "nombre": "Faraï¿½n dorado",
       "atributos": {
         "altura": 189,
         "peso": 88,
@@ -160,7 +151,7 @@
       }
     },
     {
-      "nombre": "Hombre Halcón",
+      "nombre": "Hombre Halcï¿½n",
       "atributos": {
         "altura": 196,
         "peso": 95,
@@ -170,7 +161,7 @@
       }
     },
     {
-      "nombre": "Guasón",
+      "nombre": "Guasï¿½n",
       "atributos": {
         "altura": 170,
         "peso": 67,
@@ -200,7 +191,7 @@
       }
     },
     {
-      "nombre": "Pigüino",
+      "nombre": "Pigï¿½ino",
       "atributos": {
         "altura": 160,
         "peso": 90,
@@ -370,7 +361,7 @@
       }
     },
     {
-      "nombre": "Mujer araña",
+      "nombre": "Mujer araï¿½a",
       "atributos": {
         "altura": 176,
         "peso": 56,
@@ -421,6 +412,16 @@
     },
     {
       "nombre": "Hulk",
+      "atributos": {
+        "altura": 240,
+        "peso": 450,
+        "fuerza": 2500,
+        "peleas ganadas": 997,
+        "velocidad": 130
+      }
+    },
+    {
+      "nombre": "She-Hulk",
       "atributos": {
         "altura": 240,
         "peso": 450,

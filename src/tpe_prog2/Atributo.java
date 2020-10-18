@@ -1,10 +1,10 @@
 package tpe_prog2;
 
-public class Cualidad {
+public class Atributo {
 	private String nombre;
 	private double valor;
 	
-	public Cualidad(String nombre, double valor) {
+	public Atributo(String nombre, double valor) {
 		this.nombre = nombre;
 		this.valor = valor;
 	}
@@ -20,6 +20,11 @@ public class Cualidad {
 	}
 	public void setValor(int valor) {
 		this.valor = valor;
+	}
+
+	public boolean mismaCualidad(Atributo a){
+		return a.getNombre().equals(this.getNombre());
+
 	}
 	@Override
 	public String toString() {
