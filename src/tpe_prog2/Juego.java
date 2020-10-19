@@ -15,6 +15,10 @@ public class Juego {
 	public void addJugador(Jugador j) {
 		jugadores.add(j);
 	}
+
+	public void jugar(){
+
+	}
 	@Override
 	public String toString() {
 		return "Juego [jugadores=" + jugadores + ", mazo=" + mazo + ", nombre=" + nombre + ", maximoRondas="

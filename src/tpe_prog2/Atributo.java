@@ -1,33 +1,49 @@
 package tpe_prog2;
 
+import java.util.Objects;
+
 public class Atributo {
-	private String nombre;
-	private double valor;
-	
-	public Atributo(String nombre, double valor) {
-		this.nombre = nombre;
-		this.valor = valor;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    private String nombre;
+    private Double valor;
 
-	public double getValor() {
-		return valor;
-	}
-	public void setValor(int valor) {
-		this.valor = valor;
-	}
+    public Atributo(String nombre, Double valor) {
+        this.nombre = nombre;
+        this.valor = valor;
+    }
 
-	public boolean mismaCualidad(Atributo a){
-		return a.getNombre().equals(this.getNombre());
+    public String getNombre() {
+        return nombre;
+    }
 
-	}
-	@Override
-	public String toString() {
-		return " Cualidad [nombre=" + nombre + ", valor=" + valor + "]";
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public boolean mismaCualidad(Atributo a) {
+        return a.getNombre().equals(this.getNombre());
+    }
+
+    public int compararCualidad(Atributo a) {
+     return this.getValor().compareTo(a.getValor());
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Atributo atributo = (Atributo) o;
+        return nombre.equals(atributo.getNombre());
+    }
+
+    @Override
+    public String toString() {
+        return " Cualidad [nombre=" + nombre + ", valor=" + valor + "]";
+    }
 }

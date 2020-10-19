@@ -14,13 +14,19 @@ public class Carta {
     public String getNombre() {
         return nombre;
     }
+    public ArrayList<Atributo> getListaCualidades(){
+        ArrayList<Atributo> cualidadesCopia = (ArrayList<Atributo>) cualidades.clone();
+        return cualidadesCopia;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
-    public ArrayList<Atributo> getCualidades() {
-        return cualidades;
+    public Atributo getCualidad(String nombreAtributo) {
+        for (Atributo a : cualidades) {
+            if (a.getNombre().equals(nombreAtributo)) {
+                return a;
+            }
+        }
+        return null;
     }
 
     public int totalCualidades() {
@@ -50,6 +56,12 @@ public class Carta {
 
     public void addCualidad(Atributo c) {
         cualidades.add(c);
+    }
+
+    public int esCartaMayor(Carta c, String nombreAtributoJugable) {
+        Atributo atr1 = c.getCualidad(nombreAtributoJugable);
+        Atributo atr2 = this.getCualidad(nombreAtributoJugable);
+        return (atr1.compararCualidad(atr2));
     }
 
     @Override

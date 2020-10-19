@@ -1,5 +1,8 @@
 package tpe_prog2;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Jugador {
     private String nombre;
     private Mazo mazo;
@@ -21,12 +24,16 @@ public class Jugador {
         return mazo;
     }
 
-    public void setMazo(Mazo mazo) {
-        this.mazo = mazo;
-    }
-
     public void addCarta(Carta c) {
         mazo.addCarta(c);
+    }
+
+    public String seleccionarAtributoRandom() {
+        ArrayList<Carta> cartasJugador = mazo.getCartas();
+        Carta c = cartasJugador.get(0);
+        ArrayList<Atributo>listaCualidades =c.getListaCualidades();
+        int rand = (int) (Math.random() * listaCualidades.size());
+        return listaCualidades.get(rand).getNombre();
     }
 
     public boolean tieneCarta() {

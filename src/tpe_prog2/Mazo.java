@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Mazo {
@@ -24,10 +25,6 @@ public class Mazo {
         return cartasCopia;
     }
 
-    public void setCartas(ArrayList<Carta> cartas) {
-        this.cartas = cartas;
-    }
-
     public void addCarta(Carta c) {
         cartas.add(c);
     }
@@ -37,7 +34,18 @@ public class Mazo {
         Collections.shuffle(cartas, random);
     }
 
-    public boolean verificarCartas() {
+    public void verificarCartas() {
+        Carta primerCarta = cartas.get(0);
+        Carta c;
+        Iterator<Carta> i = cartas.iterator();
+        while (i.hasNext()) {
+            c = i.next();
+            if (!c.verificarCualidades(primerCarta)) {
+                i.remove();
+            }
+        }
+    }
+   /* public boolean verificarCartas() {
         Carta primerCarta = cartas.get(0);
 
         for (Carta c : cartas) {
@@ -46,17 +54,17 @@ public class Mazo {
             }
         }
         return true;
-    }
+    }*/
 
     public ArrayList<Jugador> repartirCartas(ArrayList<Jugador> jugadores) {
         ArrayList<Jugador> jugadoresConMazo = (ArrayList<Jugador>) jugadores.clone();
         boolean mazoImpar = this.esImpar();
         int cantJugadores = jugadoresConMazo.size();
-        int numeroCartas=cartas.size();
+        int numeroCartas = cartas.size();
         for (int i = 0; i < numeroCartas; i++) {
-            int jugadorActual= i % cantJugadores;
-            if(mazoImpar && i==numeroCartas-1){
-                jugadorActual=0;
+            int jugadorActual = i % cantJugadores;
+            if (mazoImpar && i == numeroCartas - 1) {
+                jugadorActual = 0;
             }
             Jugador jugador = jugadoresConMazo.get(jugadorActual);
             Carta carta = cartas.get(i);
@@ -86,7 +94,7 @@ public class Mazo {
                 Carta unaCarta = new Carta(nombreCarta);
                 JsonObject atributos = (JsonObject) carta.getJsonObject("atributos");
                 for (String nombreAtributo : atributos.keySet()) {
-                    Atributo unaCualidad = new Atributo(nombreAtributo, atributos.getInt(nombreAtributo));
+                    Atributo unaCualidad = new Atributo(nombreAtributo, (double) atributos.getInt(nombreAtributo));
                     unaCarta.addCualidad(unaCualidad);
                 }
                 mazo.addCarta(unaCarta);

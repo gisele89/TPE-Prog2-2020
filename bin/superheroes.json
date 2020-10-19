@@ -41,6 +41,15 @@
       }
     },
     {
+      "nombre": "Helicoptero",
+      "atributos": {
+        "envergadura": 196,
+        "peso": 99,
+        "capacidad": 830,
+        "velocidad": 340
+      }
+    },
+    {
       "nombre": "Doctor Fate",
       "atributos": {
         "altura": 200,
@@ -419,27 +428,8 @@
         "peleas ganadas": 997,
         "velocidad": 130
       }
-    },
-    {
-      "nombre": "She-Hulk",
-      "atributos": {
-        "altura": 240,
-        "peso": 450,
-        "fuerza": 2500,
-        "peleas ganadas": 997,
-        "velocidad": 130
-      }
-    },
-    {
-      "nombre": "Child-Hulk",
-      "atributos": {
-        "altura": 240,
-        "peso": 450,
-        "fuerza": 2500,
-        "peleas ganadas": 997,
-        "velocidad": 130
-      }
     }
+
 	
   ]
 }

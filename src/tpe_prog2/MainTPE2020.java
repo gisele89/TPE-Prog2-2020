@@ -16,7 +16,7 @@ public class MainTPE2020 {
 		String mazoPath = "src/superheroes.json";
         Mazo m = Mazo.cargarMazo(mazoPath);
 
-		boolean isTriue = m.verificarCartas();
+		m.verificarCartas();
         Jugador j1= new Jugador("Lucrecia");
 		Jugador j2= new Jugador("Gisele");
 		ArrayList<Jugador> jugadores= new ArrayList<>();
