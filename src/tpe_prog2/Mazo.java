@@ -18,7 +18,6 @@ public class Mazo {
 
     public Mazo() {
         cartas = new ArrayList<Carta>();
-        //esta mal hacer acá el cargar y el verificar cartas?
     }
 
     public ArrayList<Carta> getCartas() {
@@ -79,10 +78,6 @@ public class Mazo {
     public boolean esImpar() {
 
         return cartas.size() % 2 == 1;
-    }
-
-    public boolean tieneCarta(Carta c) {
-        return cartas.contains(c);
     }
 
     public static Mazo cargarMazo(String jsonFile) {

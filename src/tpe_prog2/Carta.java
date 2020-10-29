@@ -64,6 +64,11 @@ public class Carta {
         return (atr1.compararCualidad(atr2));
     }
 
+    public boolean equals(Object o) {
+        Atributo atributo = (Atributo) o;
+        return nombre.equals(atributo.getNombre());
+    }
+
     @Override
     public String toString() {
         return "\n \n Carta [nombre=" + nombre + ", cualidades=" + cualidades + "]\n";
