@@ -31,20 +31,20 @@ public class Jugador {
     public String seleccionarAtributoRandom() {
         ArrayList<Carta> cartasJugador = mazo.getCartas();
         Carta c = cartasJugador.get(0);
-        ArrayList<Atributo>listaCualidades =c.getListaCualidades();
+        ArrayList<Atributo> listaCualidades = c.getListaCualidades();
         int rand = (int) (Math.random() * listaCualidades.size());
         return listaCualidades.get(rand).getNombre();
     }
 
-    public boolean tieneCarta() {
-        return false;
+    public boolean tieneCartaJugador(Carta c) {
+        return mazo.tieneCarta(c);
     }
 
     public boolean tieneTurno() {
         return false;
     }
 
-    public void pasarCartaAlFinal(Jugador j) {
-
+    public void pasarCartaAlFinal(Carta c) {
+        mazo.addCarta(c);
     }
 }
