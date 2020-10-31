@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class Carta {
     private String nombre;
     private ArrayList<Atributo> cualidades;
-
+    //van a modificar cada uno de los atributos de la carta
+    private Pocima pocima;//tengo que poder tener muchas --donde las meto? 
+    
     public Carta(String nombre) {
         this.nombre = nombre;
         cualidades = new ArrayList<>();
+        this.pocima =null; //le pongo una pocima en null?? -----
     }
 
     public String getNombre() {

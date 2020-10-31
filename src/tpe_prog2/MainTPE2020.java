@@ -17,7 +17,6 @@ public class MainTPE2020 {
     public static void main(String[] args) {
         String mazoPath = "src/superheroes.json";
         Mazo m = Mazo.cargarMazo(mazoPath);
-
         m.verificarCartas();
         Jugador j1 = new Jugador("Lucrecia");
         Jugador j2 = new Jugador("Gisele");
@@ -42,7 +41,7 @@ public class MainTPE2020 {
         System.out.println("Carta nueva agregada------------------------------------------------------");
         System.out.println(j2.getCartasJugador());
 
-
+        System.out.println();              
     }
 //final
 }

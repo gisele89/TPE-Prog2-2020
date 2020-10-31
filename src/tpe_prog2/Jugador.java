@@ -8,6 +8,7 @@ import java.util.Random;
 public class Jugador {
     private String nombre;
     private ArrayList<Carta> cartas;
+    private boolean tieneTurno = false;
     // private Mazo mazo;
 
     public Jugador(String nombre) {
@@ -50,8 +51,8 @@ public class Jugador {
         return cartas.size() == 0;
     }
 
-    public boolean tieneTurno() {
-        return false;
+    public boolean esTurnoDe(Jugador j) {
+        return j.tieneTurno;
     }
 
     public ArrayList<Carta> pasarCartaAlFinal() {

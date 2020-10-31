@@ -14,7 +14,9 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class Mazo {
-    ArrayList<Carta> cartas;
+    private ArrayList<Carta> cartas;
+    //si las reparto al inicio deberia tenerlas e el mazo
+    private ArrayList<Pocima> pocimas;//tengo que poder tener muchas --donde las meto? --
 
     public Mazo() {
         cartas = new ArrayList<Carta>();

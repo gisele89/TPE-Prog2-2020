@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Juego {
     private ArrayList<Jugador> jugadores;
+    //POR DEFECTO LA ESTRATEGIA VENIA SIENDO TIMBERO
+    private Estrategia estrategiaUsada; //si quiero cambiar en tiempo de ejecucion uso un objeto de otra clase
     private Mazo mazo;
     private String nombre;
     private int maximoRondas;
@@ -17,7 +19,13 @@ public class Juego {
         this.rondas = 0;
 
     }
-
+ 
+    public Estrategia seleccionarEstrategia() { //le paso parametros??--creo que no 
+    	this.estrategiaUsada.getNombre();//aca solo traigo el nombre :|
+	
+    	return estrategiaUsada;
+    }
+    
     public ArrayList<Jugador> getJugadores() {
         ArrayList<Jugador> copiaJugadores = new ArrayList<Jugador>();
         copiaJugadores = jugadores;
@@ -42,7 +50,11 @@ public class Juego {
 
     public int contarRondas() {
         rondas++;
+        
+        return rondas;
     }
+    
+    
 
     public boolean terminoJuego() {
         if (maximoRondas == rondas || !this.JugadoresTienenCartas()) {
