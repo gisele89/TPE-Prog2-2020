@@ -7,17 +7,18 @@ public class Carta {
     private ArrayList<Atributo> cualidades;
     //van a modificar cada uno de los atributos de la carta
     private Pocima pocima;//tengo que poder tener muchas --donde las meto? 
-    
+
     public Carta(String nombre) {
         this.nombre = nombre;
         cualidades = new ArrayList<>();
-        this.pocima =null; //le pongo una pocima en null?? -----
+        this.pocima = null; //le pongo una pocima en null?? -----
     }
 
     public String getNombre() {
         return nombre;
     }
-    public ArrayList<Atributo> getListaCualidades(){
+
+    public ArrayList<Atributo> getListaCualidades() {
         ArrayList<Atributo> cualidadesCopia = (ArrayList<Atributo>) cualidades.clone();
         return cualidadesCopia;
 
@@ -62,8 +63,8 @@ public class Carta {
     }
 
     public int esCartaMayor(Carta c, String nombreAtributoJugable) {
-        Atributo atr1 = c.getCualidad(nombreAtributoJugable);
-        Atributo atr2 = this.getCualidad(nombreAtributoJugable);
+        Atributo atr1 = this.getCualidad(nombreAtributoJugable);
+        Atributo atr2 = c.getCualidad(nombreAtributoJugable);
         return (atr1.compararCualidad(atr2));
     }
 

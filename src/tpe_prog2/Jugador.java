@@ -9,11 +9,10 @@ public class Jugador {
     private String nombre;
     private ArrayList<Carta> cartas;
     private boolean tieneTurno = false;
-    // private Mazo mazo;
+
 
     public Jugador(String nombre) {
         this.nombre = nombre;
-        //this.mazo = new Mazo();
         cartas = new ArrayList<Carta>();
     }
 
@@ -28,9 +27,10 @@ public class Jugador {
     public ArrayList<Carta> getCartasJugador() {
         return cartas;
     }
-/*public Mazo getMazo() {
-        return mazo;
-    }*/
+
+    public Carta getCartaJugable() {
+        return cartas.get(0);
+    }
 
     public void addCarta(Carta c) {
         cartas.add(c);
@@ -48,7 +48,7 @@ public class Jugador {
     }
 
     public boolean tieneCartasDisponibles() {
-        return cartas.size() == 0;
+        return cartas.size() > 0;
     }
 
     public boolean esTurnoDe(Jugador j) {
@@ -63,21 +63,24 @@ public class Jugador {
     public Carta devolverCarta() {
         Carta primerCarta = cartas.get(0);
         cartas.remove(0);
-        /*Iterator<Carta> i = cartas.iterator();
-        while (i.hasNext()) {
-            c = i.next();
-            if (c.equals(primerCarta)) {
-                i.remove();
-            }*/
         return primerCarta;
     }
 
+    public int totalCartas() {
+        return cartas.size();
+    }
+
+    public boolean equals(Object o) {
+        Jugador jugador = (Jugador) o;
+        return nombre.equals(jugador.getNombre());
+    }
 
     @Override
     public String toString() {
         return "Jugador{" +
                 "nombre='" + nombre + '\'' +
                 ", cartas=" + cartas +
+                ", tieneTurno=" + tieneTurno +
                 '}';
     }
 }

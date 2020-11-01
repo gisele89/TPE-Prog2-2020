@@ -20,28 +20,10 @@ public class MainTPE2020 {
         m.verificarCartas();
         Jugador j1 = new Jugador("Lucrecia");
         Jugador j2 = new Jugador("Gisele");
-        ArrayList<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(j1);
-        jugadores.add(j2);
-
-        m.mezclarCartas();
-        ArrayList<Jugador> jugadoresConMazo = m.repartirCartas(jugadores);
-
-        //System.out.println(jugadoresConMazo);
-        System.out.println("------------------------------------------------------");
-        System.out.println(j1.getCartasJugador());
-        System.out.println("carta pasada al final------------------------------------------------------");
-        System.out.println(j1.pasarCartaAlFinal());
-        System.out.println("------------------------------------------------------");
-        System.out.println(j1.getCartasJugador());
-        System.out.println("Carta devuelta------------------------------------------------------");
-        System.out.println(j1.getCartasJugador());
-        System.out.println("------------------------------------------------------");
-        j2.addCarta(j1.devolverCarta());
-        System.out.println("Carta nueva agregada------------------------------------------------------");
-        System.out.println(j2.getCartasJugador());
-
-        System.out.println();              
+        Juego juego = new Juego(m, "Juego prueba", 10);
+        juego.setJugador1(j1);
+        juego.setJugador2(j2);
+        juego.jugar();
     }
 //final
 }
