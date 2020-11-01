@@ -18,6 +18,7 @@ import java.util.Random;
 public class Mazo {
     private ArrayList<Carta> cartas;
     private ArrayList<Pocima> pocimas;
+
     public Mazo() {
         cartas = new ArrayList<Carta>();
     }
@@ -60,16 +61,6 @@ public class Mazo {
             }
         }
     }
-   /* public boolean verificarCartas() {
-        Carta primerCarta = cartas.get(0);
-
-        for (Carta c : cartas) {
-            if (!c.verificarCualidades(primerCarta)) {
-                return false;
-            }
-        }
-        return true;
-    }*/
 
     public ArrayList<Jugador> repartirCartas(ArrayList<Jugador> jugadores) {
         ArrayList<Jugador> jugadoresConMazo = (ArrayList<Jugador>) jugadores.clone();
@@ -91,7 +82,8 @@ public class Mazo {
     }
 
     public boolean esImpar() {
-        return cartas.size() % 2 == 1;
+        int modulo = 2;
+        return cartas.size() % modulo == 1;
     }
 
     public static Mazo cargarMazo(String jsonFile) {

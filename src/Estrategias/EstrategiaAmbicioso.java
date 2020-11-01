@@ -4,7 +4,7 @@ import tpe_prog2.Atributo;
 
 import java.util.ArrayList;
 
-public class EstrategiaAmbicioso extends Estrategia {
+public class EstrategiaAmbicioso implements Estrategia {
     public EstrategiaAmbicioso() {
     }
 

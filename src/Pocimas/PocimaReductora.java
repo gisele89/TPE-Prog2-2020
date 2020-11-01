@@ -12,8 +12,9 @@ public class PocimaReductora extends Pocima {
 
     @Override
     public double aplicar(Atributo a) {
+        int valorPorcentaje = 100;
         double valor = a.getValor();
-        double incremento = (valor * this.porcentaje) / 100;
+        double incremento = (valor * this.porcentaje) / valorPorcentaje;
         return valor - incremento;
     }
 }

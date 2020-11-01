@@ -15,9 +15,10 @@ public class PocimaSelectivaAtributo extends Pocima {
 
     @Override
     public double aplicar(Atributo a) {
+        int valorPorcentaje = 100;
         if (a.getNombre().equals(nombreAtributo)) {
             double valor = a.getValor();
-            double incremento = (valor * this.porcentaje) / 100;
+            double incremento = (valor * this.porcentaje) / valorPorcentaje;
             return valor + incremento;
         }
         return a.getValor();

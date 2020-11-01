@@ -4,6 +4,6 @@ import tpe_prog2.Atributo;
 
 import java.util.ArrayList;
 
-public abstract class Estrategia {
+public interface Estrategia {
     public abstract Atributo elegirAtributo(ArrayList<Atributo> listaCualidades);
 }

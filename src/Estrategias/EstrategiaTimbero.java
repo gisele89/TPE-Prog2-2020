@@ -4,12 +4,12 @@ import tpe_prog2.Atributo;
 
 import java.util.ArrayList;
 
-public class EstrategiaTimbero extends Estrategia {
+public class EstrategiaTimbero implements Estrategia {
     public EstrategiaTimbero() {
     }
 
     @Override
-    public Atributo elegirAtributo(ArrayList<Atributo>listaCualidades) {
+    public Atributo elegirAtributo(ArrayList<Atributo> listaCualidades) {
         int rand = (int) (Math.random() * listaCualidades.size());
         return listaCualidades.get(rand);
     }

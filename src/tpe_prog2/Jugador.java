@@ -34,7 +34,8 @@ public class Jugador {
     }
 
     public ArrayList<Carta> getCartasJugador() {
-        return cartas;
+        ArrayList<Carta> copiaJugador = (ArrayList<Carta>) cartas.clone();
+        return copiaJugador;
     }
 
     public Carta getCartaJugable() {
@@ -63,9 +64,8 @@ public class Jugador {
         return j.tieneTurno;
     }
 
-    public ArrayList<Carta> pasarCartaAlFinal() {
+    public void pasarCartaAlFinal() {
         Collections.rotate(cartas, -1);
-        return cartas;
     }
 
     public Carta devolverCarta() {
