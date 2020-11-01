@@ -2,6 +2,8 @@ package tpe_prog2;
 
 import java.util.ArrayList;
 
+import Pocimas.Pocima;
+
 public class Juego {
     private Jugador j1;
     private Jugador j2;
@@ -9,12 +11,14 @@ public class Juego {
     private String nombre;
     private int maximoRondas;
     private int rondas;
+    private ArrayList<Pocima> pocimas;
 
     public Juego(Mazo mazo, String nombre, int maximoRondas) {
         this.mazo = mazo;
         this.nombre = nombre;
         this.maximoRondas = maximoRondas;
         this.rondas = 0;
+        pocimas = new ArrayList<Pocima>();
 
     }
 
@@ -30,12 +34,6 @@ public class Juego {
         this.j2 = j2;
     }
 
-   /* public ArrayList<Jugador> getJugadores() {
-        ArrayList<Jugador> copiaJugadores = new ArrayList<Jugador>();
-        copiaJugadores = jugadores;
-        return copiaJugadores;
-    }*/
-
     public Mazo getMazo() {
         return mazo;
     }
@@ -48,9 +46,9 @@ public class Juego {
         return maximoRondas;
     }
 
-    /*public void addJugador(Jugador j) {
-        jugadores.add(j);
-    }*/
+    public void addPocima(Pocima p) {
+        pocimas.add(p);
+    }
 
     public int contarRondas() {
         rondas++;
@@ -73,6 +71,7 @@ public class Juego {
     }
 
     public void jugar() {
+        this.distribuirPocimas();
         mazo.mezclarCartas();
         ArrayList<Jugador> jugadoresConMazo = new ArrayList<Jugador>();
         jugadoresConMazo.add(j1);
@@ -107,15 +106,41 @@ public class Juego {
             this.imprimirResultadoRonda(jugadorConTurno, atributoJugable, c, c2, jugadorGanador);
             jugadorConTurno = jugadorGanador;
         }
+        this.imprimirGanador();
+    }
+
+    private void distribuirPocimas() {
+        ArrayList<Carta> cartas = mazo.getCartas();
+        for (Pocima p : pocimas) {
+            Carta c = cartas.get(0);
+            cartas.remove(0);
+            mazo.getCarta(c.getNombre()).setPocima(p);
+        }
     }
 
     public void imprimirResultadoRonda(Jugador jugadorConTurno, String atributoJugable, Carta c, Carta c2, Jugador jugadorGanador) {
         System.out.println("------- Ronda " + this.getRondas() + " -------");
         System.out.println("El jugador " + jugadorConTurno.getNombre() + " selecciona competir por el atributo " + atributoJugable);
-        System.out.println("La carta de " + this.j1.getNombre() + " es " + c.getNombre() + " con " + atributoJugable + " " + c.getCualidad(atributoJugable).getValor());
-        System.out.println("La carta de " + this.j2.getNombre() + " es " + c2.getNombre() + " con " + atributoJugable + " " + c2.getCualidad(atributoJugable).getValor());
+        System.out.println("La carta de " + this.j1.getNombre() + " es " + c.getNombre() + " con " + atributoJugable + " " + c.getCualidad(atributoJugable).getValor() + imprimirValorPocima(c, atributoJugable));
+        System.out.println("La carta de " + this.j2.getNombre() + " es " + c2.getNombre() + " con " + atributoJugable + " " + c2.getCualidad(atributoJugable).getValor() + imprimirValorPocima(c2, atributoJugable));
         System.out.println("Gana la ronda " + jugadorGanador.getNombre());
         System.out.println(this.j1.getNombre() + " posee ahora " + j1.totalCartas() + " cartas y " + this.j2.getNombre() + " posee ahora " + j2.totalCartas() + " cartas");
+    }
+
+    private String imprimirValorPocima(Carta c, String atributoJugable) {
+        String resultado = "";
+        if (c.tienePocima()) {
+            resultado = " se aplicó pocima " + c.getPocima().getNombre() + " valor resultante " + c.getValorCualidad(atributoJugable);
+        }
+        return resultado;
+    }
+
+    public void imprimirGanador() {
+        Jugador jugadorGanador = j1;
+        if (j2.totalCartas() > j1.totalCartas()) {
+            jugadorGanador = j2;
+        }
+        System.out.println("El jugador ganador es " + jugadorGanador.getNombre());
     }
 
     @Override

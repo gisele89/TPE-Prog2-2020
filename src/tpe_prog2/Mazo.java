@@ -29,6 +29,19 @@ public class Mazo {
         return cartasCopia;
     }
 
+    public Carta getCarta(String nombreCarta) {
+        for (Carta c : cartas) {
+            if (c.getNombre().equals(nombreCarta)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public int totalCartas() {
+        return cartas.size();
+    }
+
     public void addCarta(Carta c) {
         cartas.add(c);
     }
@@ -80,7 +93,6 @@ public class Mazo {
     }
 
     public boolean esImpar() {
-
         return cartas.size() % 2 == 1;
     }
 

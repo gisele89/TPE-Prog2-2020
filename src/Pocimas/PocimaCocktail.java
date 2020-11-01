@@ -23,12 +23,14 @@ public class PocimaCocktail extends Pocima {
     }
 
     @Override
-    public double calcular(Atributo a) {
-        double sumaPocimas = 0.0;
+    public double aplicar(Atributo a) {
+        Atributo atributoCopia = new Atributo(a.getNombre(), a.getValor());
+        double pocimaAplicada = 0.0;
         for (Pocima p : pocimas) {
-            sumaPocimas += p.calcular(a);
+            pocimaAplicada = p.aplicar(atributoCopia);
+            atributoCopia.setValor(pocimaAplicada);
         }
-        return sumaPocimas;
+        return atributoCopia.getValor();
     }
 
 }

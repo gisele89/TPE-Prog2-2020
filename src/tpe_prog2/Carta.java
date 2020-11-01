@@ -19,6 +19,10 @@ public class Carta {
         return pocima != null;
     }
 
+    public Pocima getPocima() {
+        return pocima;
+    }
+
     public void setPocima(Pocima pocima) {
         this.pocima = pocima;
     }
@@ -41,11 +45,12 @@ public class Carta {
         }
         return null;
     }
+
     public double getValorCualidad(String nombreAtributo) {
         for (Atributo a : cualidades) {
             if (a.getNombre().equals(nombreAtributo)) {
-                if(tienePocima()){
-                    return pocima.calcular(a);
+                if (tienePocima()) {
+                    return pocima.aplicar(a);
                 }
                 return a.getValor();
             }
@@ -83,9 +88,9 @@ public class Carta {
     }
 
     public int esCartaMayor(Carta c, String nombreAtributoJugable) {
-        Atributo atr1 = this.getCualidad(nombreAtributoJugable);
-        Atributo atr2 = c.getCualidad(nombreAtributoJugable);
-        return (atr1.compararCualidad(atr2));
+        Double valor1 = this.getValorCualidad(nombreAtributoJugable);
+        Double valor2 = c.getValorCualidad(nombreAtributoJugable);
+        return valor1.compareTo(valor2);
     }
 
 

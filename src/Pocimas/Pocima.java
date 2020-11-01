@@ -16,13 +16,13 @@ public abstract class Pocima {
         return nombre;
     }
 
-    public abstract double calcular(Atributo a);
+    public abstract double aplicar(Atributo a);
 
-    public void aplicar(Carta c) {
+    /*public void aplicar(Carta c) {
         ArrayList<Atributo> cualidades = c.getListaCualidades();
         for (Atributo a : cualidades) {
             Atributo atr = c.getCualidad(a.getNombre());
             atr.setValor(calcular(atr));
         }
-    }
+    }*/
 }

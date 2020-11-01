@@ -11,7 +11,7 @@ public class PocimaRetornoFijo extends Pocima {
     }
 
     @Override
-    public double calcular(Atributo a) {
+    public double aplicar(Atributo a) {
         return valorRetorno;
     }
 
