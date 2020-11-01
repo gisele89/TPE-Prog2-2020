@@ -135,7 +135,7 @@ public class Juego {
         return resultado;
     }
 
-    public void imprimirGanador() {
+    private void imprimirGanador() {
         Jugador jugadorGanador = j1;
         if (j2.totalCartas() > j1.totalCartas()) {
             jugadorGanador = j2;

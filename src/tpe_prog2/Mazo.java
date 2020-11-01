@@ -17,9 +17,7 @@ import java.util.Random;
 
 public class Mazo {
     private ArrayList<Carta> cartas;
-    //si las reparto al inicio deberia tenerlas e el mazo
-    private ArrayList<Pocima> pocimas;//tengo que poder tener muchas --donde las meto? --
-
+    private ArrayList<Pocima> pocimas;
     public Mazo() {
         cartas = new ArrayList<Carta>();
     }
@@ -102,9 +100,7 @@ public class Mazo {
         InputStream is;
         try {
             is = new FileInputStream(jsonInputFile);
-            // Creo el objeto JsonReader de Json.
             JsonReader reader = Json.createReader(is);
-            // Obtenemos el JsonObject a partir del JsonReader.
             JsonArray cartas = (JsonArray) reader.readObject().getJsonArray("cartas");
             for (JsonObject carta : cartas.getValuesAs(JsonObject.class)) {
                 String nombreCarta = carta.getString("nombre");

@@ -5,6 +5,9 @@ import tpe_prog2.Atributo;
 import java.util.ArrayList;
 
 public class EstrategiaAmbicioso extends Estrategia {
+    public EstrategiaAmbicioso() {
+    }
+
     @Override
     public Atributo elegirAtributo(ArrayList<Atributo> listaCualidades) {
         Atributo atributoMayor = listaCualidades.get(0);

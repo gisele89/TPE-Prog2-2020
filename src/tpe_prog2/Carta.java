@@ -36,7 +36,6 @@ public class Carta {
         return cualidadesCopia;
 
     }
-
     public Atributo getCualidad(String nombreAtributo) {
         for (Atributo a : cualidades) {
             if (a.getNombre().equals(nombreAtributo)) {
@@ -73,7 +72,6 @@ public class Carta {
             }
         return true;
     }
-
     public boolean tieneCualidad(Atributo atr) {
         for (Atributo a : cualidades) {
             if (a.mismaCualidad(atr)) {

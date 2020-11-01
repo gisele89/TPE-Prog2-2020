@@ -15,7 +15,7 @@ public class PocimaCocktail extends Pocima {
     }
 
     public ArrayList<Pocima> getPocimas() {
-        return (ArrayList<Pocima>) pocimas.clone();
+        return new ArrayList<Pocima>(pocimas);
     }
 
     public void addPocima(Pocima p) {
