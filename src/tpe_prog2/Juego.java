@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class Juego {
     private Jugador j1;
     private Jugador j2;
-    //POR DEFECTO LA ESTRATEGIA VENIA SIENDO TIMBERO
-    private Estrategia estrategiaUsada; //si quiero cambiar en tiempo de ejecucion uso un objeto de otra clase
     private Mazo mazo;
     private String nombre;
     private int maximoRondas;
@@ -30,12 +28,6 @@ public class Juego {
 
     public void setJugador2(Jugador j2) {
         this.j2 = j2;
-    }
-
-    public Estrategia seleccionarEstrategia() { //le paso parametros??--creo que no
-        this.estrategiaUsada.getNombre();//aca solo traigo el nombre :|
-
-        return estrategiaUsada;
     }
 
    /* public ArrayList<Jugador> getJugadores() {
@@ -94,7 +86,7 @@ public class Juego {
         Jugador jugadorGanador;
 
         while (!terminoJuego()) {
-            String atributoJugable = jugadorConTurno.seleccionarAtributoRandom();
+            String atributoJugable = jugadorConTurno.seleccionarAtributo();
             Carta c = j1.getCartaJugable();
             Carta c2 = j2.getCartaJugable();
             int resultado = c.esCartaMayor(c2, atributoJugable);
@@ -131,7 +123,6 @@ public class Juego {
         return "Juego{" +
                 "j1=" + j1 +
                 ", j2=" + j2 +
-                ", estrategiaUsada=" + estrategiaUsada +
                 ", mazo=" + mazo +
                 ", nombre='" + nombre + '\'' +
                 ", maximoRondas=" + maximoRondas +

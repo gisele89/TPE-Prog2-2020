@@ -1,5 +1,8 @@
 package tpe_prog2;
 
+import Estrategias.Estrategia;
+import Estrategias.EstrategiaTimbero;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -9,11 +12,17 @@ public class Jugador {
     private String nombre;
     private ArrayList<Carta> cartas;
     private boolean tieneTurno = false;
+    private Estrategia estrategia;
 
 
     public Jugador(String nombre) {
         this.nombre = nombre;
         cartas = new ArrayList<Carta>();
+        estrategia = new EstrategiaTimbero();
+    }
+
+    public void setEstrategia(Estrategia estrategia) {
+        this.estrategia = estrategia;
     }
 
     public String getNombre() {
@@ -36,11 +45,10 @@ public class Jugador {
         cartas.add(c);
     }
 
-    public String seleccionarAtributoRandom() {
+    public String seleccionarAtributo() {
         Carta c = cartas.get(0);
-        ArrayList<Atributo> listaCualidades = c.getListaCualidades();
-        int rand = (int) (Math.random() * listaCualidades.size());
-        return listaCualidades.get(rand).getNombre();
+        Atributo atributoSeleccionado = estrategia.elegirAtributo(c.getListaCualidades());
+        return atributoSeleccionado.getNombre();
     }
 
     public boolean tieneCartaJugador(Carta c) {

@@ -1,17 +1,26 @@
 package tpe_prog2;
 
+import Pocimas.Pocima;
+
 import java.util.ArrayList;
 
 public class Carta {
     private String nombre;
     private ArrayList<Atributo> cualidades;
-    //van a modificar cada uno de los atributos de la carta
-    private Pocima pocima;//tengo que poder tener muchas --donde las meto? 
+    private Pocima pocima;
 
     public Carta(String nombre) {
         this.nombre = nombre;
         cualidades = new ArrayList<>();
-        this.pocima = null; //le pongo una pocima en null?? -----
+        this.pocima = null;
+    }
+
+    public boolean tienePocima() {
+        return pocima != null;
+    }
+
+    public void setPocima(Pocima pocima) {
+        this.pocima = pocima;
     }
 
     public String getNombre() {
@@ -31,6 +40,17 @@ public class Carta {
             }
         }
         return null;
+    }
+    public double getValorCualidad(String nombreAtributo) {
+        for (Atributo a : cualidades) {
+            if (a.getNombre().equals(nombreAtributo)) {
+                if(tienePocima()){
+                    return pocima.calcular(a);
+                }
+                return a.getValor();
+            }
+        }
+        return 0.0;
     }
 
     public int totalCualidades() {
@@ -67,6 +87,7 @@ public class Carta {
         Atributo atr2 = c.getCualidad(nombreAtributoJugable);
         return (atr1.compararCualidad(atr2));
     }
+
 
     public boolean equals(Object o) {
         Atributo atributo = (Atributo) o;
