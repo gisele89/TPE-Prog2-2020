@@ -112,9 +112,11 @@ public class Juego {
     private void distribuirPocimas() {
         ArrayList<Carta> cartas = mazo.getCartas();
         for (Pocima p : pocimas) {
-            Carta c = cartas.get(0);
-            cartas.remove(0);
-            mazo.getCarta(c.getNombre()).setPocima(p);
+            if (cartas.size() > 0) {
+                Carta c = cartas.get(0);
+                cartas.remove(0);
+                mazo.getCarta(c.getNombre()).setPocima(p);
+            }
         }
     }
 

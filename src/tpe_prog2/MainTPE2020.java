@@ -2,6 +2,7 @@ package tpe_prog2;
 
 import Estrategias.EstrategiaAmbicioso;
 import Estrategias.EstrategiaObstinado;
+import Estrategias.EstrategiaTimbero;
 import Pocimas.*;
 
 import java.io.File;
@@ -19,13 +20,15 @@ import javax.json.JsonReader;
 public class MainTPE2020 {
 
     public static void main(String[] args) {
-        String mazoPath = "src/superheroes.json";
+       // String mazoPath = "src/superheroes.json";
+        String mazoPath = "src/autos.json";
         Mazo m = Mazo.cargarMazo(mazoPath);
         m.verificarCartas();
         Jugador j1 = new Jugador("Lucrecia");
         Jugador j2 = new Jugador("Gisele");
-        j1.setEstrategia(new EstrategiaAmbicioso());
-        j2.setEstrategia(new EstrategiaObstinado("fuerza"));
+        j1.setEstrategia(new EstrategiaTimbero());
+        j2.setEstrategia(new EstrategiaObstinado("RPM"));
+        //j2.setEstrategia(new EstrategiaObstinado("fuerza"));//para probar mazo superheroes
         Juego juego = new Juego(m, "Juego prueba", 20);
         juego.setJugador1(j1);
         juego.setJugador2(j2);

@@ -47,9 +47,14 @@ public class Jugador {
     }
 
     public String seleccionarAtributo() {
-        Carta c = cartas.get(0);
-        Atributo atributoSeleccionado = estrategia.elegirAtributo(c.getListaCualidades());
-        return atributoSeleccionado.getNombre();
+        if (this.tieneCartasDisponibles()) {
+            Carta c = cartas.get(0);
+            Atributo atributoSeleccionado = estrategia.elegirAtributo(c.getListaCualidades());
+            if (atributoSeleccionado != null) {
+                return atributoSeleccionado.getNombre();
+            }
+        }
+        return null;
     }
 
     public boolean tieneCartaJugador(Carta c) {
