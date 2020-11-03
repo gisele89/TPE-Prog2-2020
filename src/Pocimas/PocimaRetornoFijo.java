@@ -14,5 +14,4 @@ public class PocimaRetornoFijo extends Pocima {
     public double aplicar(Atributo a) {
         return valorRetorno;
     }
-
 }

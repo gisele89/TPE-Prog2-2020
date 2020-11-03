@@ -142,18 +142,7 @@ public class Juego {
         if (j2.totalCartas() > j1.totalCartas()) {
             jugadorGanador = j2;
         }
-        System.out.println("El jugador ganador es " + jugadorGanador.getNombre());
+        System.out.println("El jugador ganador  del juego es " + jugadorGanador.getNombre());
     }
 
-    @Override
-    public String toString() {
-        return "Juego{" +
-                "j1=" + j1 +
-                ", j2=" + j2 +
-                ", mazo=" + mazo +
-                ", nombre='" + nombre + '\'' +
-                ", maximoRondas=" + maximoRondas +
-                ", rondas=" + rondas +
-                '}';
-    }
 }

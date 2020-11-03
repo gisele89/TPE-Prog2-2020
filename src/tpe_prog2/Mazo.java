@@ -37,10 +37,6 @@ public class Mazo {
         return null;
     }
 
-    public int totalCartas() {
-        return cartas.size();
-    }
-
     public void addCarta(Carta c) {
         cartas.add(c);
     }
@@ -106,15 +102,8 @@ public class Mazo {
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return mazo;
     }
-
-    @Override
-    public String toString() {
-        return "Mazo [cartas=" + cartas + "]\n";
-    }
-
 }

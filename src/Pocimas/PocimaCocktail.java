@@ -1,7 +1,6 @@
 package Pocimas;
 
 import tpe_prog2.Atributo;
-import tpe_prog2.Carta;
 
 import java.util.ArrayList;
 

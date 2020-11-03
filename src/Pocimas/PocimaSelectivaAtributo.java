@@ -1,7 +1,6 @@
 package Pocimas;
 
 import tpe_prog2.Atributo;
-import tpe_prog2.Carta;
 
 public class PocimaSelectivaAtributo extends Pocima {
     private String nombreAtributo;

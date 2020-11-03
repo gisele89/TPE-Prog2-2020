@@ -5,8 +5,6 @@ import Estrategias.EstrategiaTimbero;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.Random;
 
 public class Jugador {
     private String nombre;
@@ -57,16 +55,8 @@ public class Jugador {
         return null;
     }
 
-    public boolean tieneCartaJugador(Carta c) {
-        return cartas.contains(c);
-    }
-
     public boolean tieneCartasDisponibles() {
         return cartas.size() > 0;
-    }
-
-    public boolean esTurnoDe(Jugador j) {
-        return j.tieneTurno;
     }
 
     public void pasarCartaAlFinal() {
@@ -86,14 +76,5 @@ public class Jugador {
     public boolean equals(Object o) {
         Jugador jugador = (Jugador) o;
         return nombre.equals(jugador.getNombre());
-    }
-
-    @Override
-    public String toString() {
-        return "Jugador{" +
-                "nombre='" + nombre + '\'' +
-                ", cartas=" + cartas +
-                ", tieneTurno=" + tieneTurno +
-                '}';
     }
 }
