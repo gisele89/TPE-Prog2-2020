@@ -87,10 +87,16 @@ public class Carta {
         cualidades.add(c);
     }
 
+    /*
+     El Atributo no es comparable, quedaria mejor para comparar en juego atributo con atributo.
+     */
     public int esCartaMayor(Carta c, String nombreAtributoJugable) {
-        Atributo atr1 = this.getCualidad(nombreAtributoJugable);
+        /*Atributo atr1 = this.getCualidad(nombreAtributoJugable);
         Atributo atr2 = c.getCualidad(nombreAtributoJugable);
-        return atr1.compareTo(atr2);
+        return atr1.compareTo(atr2);*/
+        Double valor1 = this.getValorCualidad(nombreAtributoJugable);
+        Double valor2 = c.getValorCualidad(nombreAtributoJugable);
+        return valor1.compareTo(valor2);
     }
 
     public Atributo obtenerMejorCualidad() {

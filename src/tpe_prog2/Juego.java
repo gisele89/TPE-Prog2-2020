@@ -113,13 +113,15 @@ public class Juego {
     }
 
     private void distribuirPocimas() {
-        ArrayList<Carta> cartas = mazo.getCartas();
+        int totalCartas = mazo.totalCartas();
+        int i = 0;
         for (Pocima p : pocimas) {
-            if (cartas.size() > 0) {
+            if (i < totalCartas) {
                 Carta c = mazo.getCartaJugable();
                 c.setPocima(p);
                 mazo.pasarCartaAlFinal();
             }
+            i++;
         }
     }
 
