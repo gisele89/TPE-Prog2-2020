@@ -73,11 +73,35 @@ public class Juego {
     public void jugar() {
         this.distribuirPocimas();
         mazo.mezclarCartas();
-        ArrayList<Jugador> jugadoresConMazo = new ArrayList<Jugador>();
+       /* ArrayList<Jugador> jugadoresConMazo = new ArrayList<Jugador>();
         jugadoresConMazo.add(j1);
         jugadoresConMazo.add(j2);
-        mazo.repartirCartas(jugadoresConMazo);
+        mazo.repartirCartas(jugadoresConMazo);*/
+        this.repartirCartas();
         this.arrancarRonda();
+    }
+
+    //repartir que genere 2 mazos y reparta las cartas del mazo original y luego asigne cada mazo a los jugadores, en el mazo un metodo remover carta que saque la primera
+
+    public void repartirCartas() {
+        ArrayList<Mazo> mazos = new ArrayList<Mazo>();
+        mazos.add(new Mazo());
+        mazos.add(new Mazo());
+        
+        boolean mazoImpar = mazo.esImpar();
+        int cantJugadores = 2;
+        int numeroCartas = mazo.totalCartas();
+        for (int i = 0; i < numeroCartas; i++) {
+            int mazoActual = i % cantJugadores;//2
+            if (mazoImpar && i == numeroCartas - 1) {
+                mazoActual = 0;
+            }
+            Carta carta = mazo.devolverCarta();
+            Mazo mazo = mazos.get(mazoActual);
+            mazo.addCarta(carta);
+        }
+        j1.setMazo(mazos.get(0));
+        j2.setMazo(mazos.get(1));
     }
 
     public void arrancarRonda() {
@@ -112,7 +136,7 @@ public class Juego {
         this.imprimirGanador();
     }
 
-    private void distribuirPocimas() {
+    private void distribuirPocimas() {// trabaja con el mazo
         int totalCartas = mazo.totalCartas();
         int i = 0;
         for (Pocima p : pocimas) {
@@ -134,7 +158,7 @@ public class Juego {
         System.out.println(this.j1.getNombre() + " posee ahora " + j1.getMazo().totalCartas() + " cartas y " + this.j2.getNombre() + " posee ahora " + j2.getMazo().totalCartas() + " cartas");
     }
 
-    private String imprimirValorPocima(Carta c, String atributoJugable) {
+    private String imprimirValorPocima(Carta c, String atributoJugable) {//mejora llama a tostring de carta
         return c.toString() + " valor resultante " + c.getValorCualidad(atributoJugable);
     }
 

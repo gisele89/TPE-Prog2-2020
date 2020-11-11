@@ -34,6 +34,10 @@ public class Jugador {
     public Mazo getMazo() {
         return mazo;
     }
+
+    public void setMazo(Mazo mazo) {
+        this.mazo = mazo;
+    }
     /*public Carta getCartaJugable() {
         return mazo.getCartaJugable();
     }*/

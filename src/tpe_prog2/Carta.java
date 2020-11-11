@@ -110,7 +110,7 @@ public class Carta {
     }
 
 
-    @Override
+    @Override//mejora para el imprimir pocima
     public String toString() {
         String resultado = "";
         if (this.tienePocima()) {

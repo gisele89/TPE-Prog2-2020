@@ -58,7 +58,7 @@ public class Mazo {
         Collections.rotate(cartas, -1);
     }
 
-    public Carta devolverCarta() {
+    public Carta devolverCarta() { //adaptar para repartir en los dos mazos
         Carta primerCarta = cartas.get(0);
         cartas.remove(0);
         return primerCarta;
@@ -92,6 +92,27 @@ public class Mazo {
         }
         return jugadoresConMazo;
     }
+
+   /* public void repartirCartas() {
+        ArrayList<Mazo> mazos = new ArrayList<Mazo>();
+        mazos.add(new Mazo());
+        mazos.add(new Mazo());
+
+        boolean mazoImpar = this.esImpar();
+        int cantJugadores = 2;
+        int numeroCartas = cartas.size();
+        for (int i = 0; i < numeroCartas; i++) {
+            int mazoActual = i % cantJugadores;
+            if (mazoImpar && i == numeroCartas - 1) {
+                mazoActual = 0;
+            }
+            Carta carta = cartas.get(i);
+            Mazo mazo = mazos.get(mazoActual);
+            mazo.addCarta(carta);
+
+        }
+        return mazos;
+    }*/
 
     public boolean esImpar() {
         int modulo = 2;
