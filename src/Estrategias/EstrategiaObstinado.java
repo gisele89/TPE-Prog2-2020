@@ -1,7 +1,7 @@
 package Estrategias;
 
 import tpe_prog2.Atributo;
-
+import tpe_prog2.Carta;
 import java.util.ArrayList;
 
 public class EstrategiaObstinado implements Estrategia {
@@ -12,12 +12,7 @@ public class EstrategiaObstinado implements Estrategia {
     }
 
     @Override
-    public Atributo elegirAtributo(ArrayList<Atributo> listaCualidades) {
-        for (Atributo a : listaCualidades) {
-            if (a.getNombre().equals(nombreAtributo)) {
-                return a;
-            }
-        }
-        return null;
+    public Atributo elegirAtributo(Carta c) {
+        return c.getCualidad(nombreAtributo);
     }
 }

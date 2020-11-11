@@ -8,14 +8,14 @@ import java.util.Collections;
 
 public class Jugador {
     private String nombre;
-    private ArrayList<Carta> cartas;
-    private boolean tieneTurno = false;
+    //private ArrayList<Carta> cartas;
+    private Mazo mazo;
     private Estrategia estrategia;
 
 
     public Jugador(String nombre) {
         this.nombre = nombre;
-        cartas = new ArrayList<Carta>();
+        mazo = new Mazo();
         estrategia = new EstrategiaTimbero();
     }
 
@@ -31,23 +31,23 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public ArrayList<Carta> getCartasJugador() {
-        ArrayList<Carta> copiaJugador = (ArrayList<Carta>) cartas.clone();
-        return copiaJugador;
+    public Mazo getMazo() {
+        return mazo;
     }
+    /*public Carta getCartaJugable() {
+        return mazo.getCartaJugable();
+    }*/
 
-    public Carta getCartaJugable() {
-        return cartas.get(0);
-    }
 
-    public void addCarta(Carta c) {
-        cartas.add(c);
-    }
+
+    /*public void addCarta(Carta c) {
+        mazo.addCarta(c);
+    }*/
 
     public String seleccionarAtributo() {
-        if (this.tieneCartasDisponibles()) {
-            Carta c = cartas.get(0);
-            Atributo atributoSeleccionado = estrategia.elegirAtributo(c.getListaCualidades());
+        if (this.mazo.tieneCartasDisponibles()) {
+            Carta c = mazo.getCartaJugable();
+            Atributo atributoSeleccionado = estrategia.elegirAtributo(c);
             if (atributoSeleccionado != null) {
                 return atributoSeleccionado.getNombre();
             }
@@ -55,23 +55,21 @@ public class Jugador {
         return null;
     }
 
-    public boolean tieneCartasDisponibles() {
-        return cartas.size() > 0;
+    /*public boolean tieneCartasDisponibles() {
+        return mazo.tieneCartasDisponibles();
     }
 
     public void pasarCartaAlFinal() {
-        Collections.rotate(cartas, -1);
+        mazo.pasarCartaAlFinal();
     }
 
     public Carta devolverCarta() {
-        Carta primerCarta = cartas.get(0);
-        cartas.remove(0);
-        return primerCarta;
+        return mazo.devolverCarta();
     }
 
     public int totalCartas() {
-        return cartas.size();
-    }
+        return mazo.totalCartas();
+    }*/
 
     public boolean equals(Object o) {
         Jugador jugador = (Jugador) o;

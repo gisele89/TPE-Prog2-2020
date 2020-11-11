@@ -20,15 +20,20 @@ import javax.json.JsonReader;
 public class MainTPE2020 {
 
     public static void main(String[] args) {
-       // String mazoPath = "src/superheroes.json";
-        String mazoPath = "src/autos.json";
+        String mazoPath = "src/superheroes.json";
+        //String mazoPath = "src/autos.json";
         Mazo m = Mazo.cargarMazo(mazoPath);
-        m.verificarCartas();
         Jugador j1 = new Jugador("Lucrecia");
         Jugador j2 = new Jugador("Gisele");
-        j1.setEstrategia(new EstrategiaTimbero());
-        j2.setEstrategia(new EstrategiaObstinado("RPM"));
-        //j2.setEstrategia(new EstrategiaObstinado("fuerza"));//para probar mazo superheroes
+        EstrategiaTimbero e1 = new EstrategiaTimbero();
+        e1.addNombreCualidad("altura");
+        e1.addNombreCualidad("peso");
+        e1.addNombreCualidad("fuerza");
+        e1.addNombreCualidad("peleas ganadas");
+        e1.addNombreCualidad("velocidad");
+        j1.setEstrategia(e1);
+        //j2.setEstrategia(new EstrategiaObstinado("RPM"));
+        j2.setEstrategia(new EstrategiaObstinado("fuerza"));//para probar mazo superheroes
         Juego juego = new Juego(m, "Juego prueba", 20);
         juego.setJugador1(j1);
         juego.setJugador2(j2);

@@ -12,12 +12,10 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Random;
 
 public class Mazo {
     private ArrayList<Carta> cartas;
-    private ArrayList<Pocima> pocimas;
 
     public Mazo() {
         cartas = new ArrayList<Carta>();
@@ -38,7 +36,36 @@ public class Mazo {
     }
 
     public void addCarta(Carta c) {
-        cartas.add(c);
+        if (cartas.isEmpty()) {
+            cartas.add(c);
+        } else {
+            Carta primerCarta = cartas.get(0);
+            if (c.verificarCualidades(primerCarta)) {
+                cartas.add(c);
+            }
+        }
+    }
+
+    public Carta getCartaJugable() {
+        return cartas.get(0);
+    }
+
+    public boolean tieneCartasDisponibles() {
+        return cartas.size() > 0;
+    }
+
+    public void pasarCartaAlFinal() {
+        Collections.rotate(cartas, -1);
+    }
+
+    public Carta devolverCarta() {
+        Carta primerCarta = cartas.get(0);
+        cartas.remove(0);
+        return primerCarta;
+    }
+
+    public int totalCartas() {
+        return cartas.size();
     }
 
     public void mezclarCartas() {
@@ -46,17 +73,6 @@ public class Mazo {
         Collections.shuffle(cartas, random);
     }
 
-    public void verificarCartas() {
-        Carta primerCarta = cartas.get(0);
-        Carta c;
-        Iterator<Carta> i = cartas.iterator();
-        while (i.hasNext()) {
-            c = i.next();
-            if (!c.verificarCualidades(primerCarta)) {
-                i.remove();
-            }
-        }
-    }
 
     public ArrayList<Jugador> repartirCartas(ArrayList<Jugador> jugadores) {
         ArrayList<Jugador> jugadoresConMazo = (ArrayList<Jugador>) jugadores.clone();
@@ -71,7 +87,7 @@ public class Mazo {
             Jugador jugador = jugadoresConMazo.get(jugadorActual);
             Carta carta = cartas.get(i);
             if (jugador != null) {
-                jugador.addCarta(carta);
+                jugador.getMazo().addCarta(carta);
             }
         }
         return jugadoresConMazo;
@@ -106,4 +122,5 @@ public class Mazo {
         }
         return mazo;
     }
+
 }

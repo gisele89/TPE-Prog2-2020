@@ -31,11 +31,11 @@ public class Carta {
         return nombre;
     }
 
-    public ArrayList<Atributo> getListaCualidades() {
+    /*public ArrayList<Atributo> getListaCualidades() {
         ArrayList<Atributo> cualidadesCopia = (ArrayList<Atributo>) cualidades.clone();
         return cualidadesCopia;
 
-    }
+    }*/
 
     public Atributo getCualidad(String nombreAtributo) {
         for (Atributo a : cualidades) {
@@ -88,14 +88,33 @@ public class Carta {
     }
 
     public int esCartaMayor(Carta c, String nombreAtributoJugable) {
-        Double valor1 = this.getValorCualidad(nombreAtributoJugable);
-        Double valor2 = c.getValorCualidad(nombreAtributoJugable);
-        return valor1.compareTo(valor2);
+        Atributo atr1 = this.getCualidad(nombreAtributoJugable);
+        Atributo atr2 = c.getCualidad(nombreAtributoJugable);
+        return atr1.compareTo(atr2);
+    }
+
+    public Atributo obtenerMejorCualidad() {
+        Atributo atributoMayor = cualidades.get(0);
+        for (Atributo a : cualidades) {
+            if (a.getValor() > atributoMayor.getValor()) {
+                atributoMayor = a;
+            }
+        }
+        return atributoMayor;
     }
 
 
+    @Override
+    public String toString() {
+        String resultado = "";
+        if (this.tienePocima()) {
+            resultado = " se aplicó pocima " + this.getPocima().getNombre();
+        }
+        return resultado;
+    }
+
     public boolean equals(Object o) {
-        Atributo atributo = (Atributo) o;
-        return nombre.equals(atributo.getNombre());
+        Carta carta = (Carta) o;
+        return nombre.equals(carta.getNombre());
     }
 }

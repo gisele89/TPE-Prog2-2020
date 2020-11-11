@@ -64,7 +64,7 @@ public class Juego {
     }
 
     public boolean JugadoresTienenCartas() {
-        if (!j1.tieneCartasDisponibles() || !j2.tieneCartasDisponibles()) {
+        if (!j1.getMazo().tieneCartasDisponibles() || !j2.getMazo().tieneCartasDisponibles()) {
             return false;
         }
         return true;
@@ -86,20 +86,23 @@ public class Juego {
 
         while (!terminoJuego()) {
             String atributoJugable = jugadorConTurno.seleccionarAtributo();
-            Carta c = j1.getCartaJugable();
-            Carta c2 = j2.getCartaJugable();
+            Mazo m1 = j1.getMazo();
+            Mazo m2 = j2.getMazo();
+            Carta c = m1.getCartaJugable();
+            Carta c2 = m2.getCartaJugable();
+
             int resultado = c.esCartaMayor(c2, atributoJugable);
             if (resultado == 0) {
-                j1.pasarCartaAlFinal();
-                j2.pasarCartaAlFinal();
+                m1.pasarCartaAlFinal();
+                m2.pasarCartaAlFinal();
                 jugadorGanador = jugadorConTurno;
             } else if (resultado == 1) {
-                j1.pasarCartaAlFinal();
-                j1.addCarta(j2.devolverCarta());
+                m1.pasarCartaAlFinal();
+                m1.addCarta(m2.devolverCarta());
                 jugadorGanador = j1;
             } else {
-                j2.pasarCartaAlFinal();
-                j2.addCarta(j1.devolverCarta());
+                m2.pasarCartaAlFinal();
+                m2.addCarta(m1.devolverCarta());
                 jugadorGanador = j2;
             }
             this.contarRondas();
@@ -113,9 +116,9 @@ public class Juego {
         ArrayList<Carta> cartas = mazo.getCartas();
         for (Pocima p : pocimas) {
             if (cartas.size() > 0) {
-                Carta c = cartas.get(0);
-                cartas.remove(0);
-                mazo.getCarta(c.getNombre()).setPocima(p);
+                Carta c = mazo.getCartaJugable();
+                c.setPocima(p);
+                mazo.pasarCartaAlFinal();
             }
         }
     }
@@ -126,20 +129,16 @@ public class Juego {
         System.out.println("La carta de " + this.j1.getNombre() + " es " + c.getNombre() + " con " + atributoJugable + " " + c.getCualidad(atributoJugable).getValor() + imprimirValorPocima(c, atributoJugable));
         System.out.println("La carta de " + this.j2.getNombre() + " es " + c2.getNombre() + " con " + atributoJugable + " " + c2.getCualidad(atributoJugable).getValor() + imprimirValorPocima(c2, atributoJugable));
         System.out.println("Gana la ronda " + jugadorGanador.getNombre());
-        System.out.println(this.j1.getNombre() + " posee ahora " + j1.totalCartas() + " cartas y " + this.j2.getNombre() + " posee ahora " + j2.totalCartas() + " cartas");
+        System.out.println(this.j1.getNombre() + " posee ahora " + j1.getMazo().totalCartas() + " cartas y " + this.j2.getNombre() + " posee ahora " + j2.getMazo().totalCartas() + " cartas");
     }
 
     private String imprimirValorPocima(Carta c, String atributoJugable) {
-        String resultado = "";
-        if (c.tienePocima()) {
-            resultado = " se aplicó pocima " + c.getPocima().getNombre() + " valor resultante " + c.getValorCualidad(atributoJugable);
-        }
-        return resultado;
+        return c.toString() + " valor resultante " + c.getValorCualidad(atributoJugable);
     }
 
     private void imprimirGanador() {
         Jugador jugadorGanador = j1;
-        if (j2.totalCartas() > j1.totalCartas()) {
+        if (j2.getMazo().totalCartas() > j1.getMazo().totalCartas()) {
             jugadorGanador = j2;
         }
         System.out.println("El jugador ganador  del juego es " + jugadorGanador.getNombre());
