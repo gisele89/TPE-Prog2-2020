@@ -31,11 +31,6 @@ public class Carta {
         return nombre;
     }
 
-    /*public ArrayList<Atributo> getListaCualidades() {
-        ArrayList<Atributo> cualidadesCopia = (ArrayList<Atributo>) cualidades.clone();
-        return cualidadesCopia;
-
-    }*/
 
     public Atributo getCualidad(String nombreAtributo) {
         for (Atributo a : cualidades) {

@@ -87,7 +87,7 @@ public class Juego {
         ArrayList<Mazo> mazos = new ArrayList<Mazo>();
         mazos.add(new Mazo());
         mazos.add(new Mazo());
-        
+
         boolean mazoImpar = mazo.esImpar();
         int cantJugadores = 2;
         int numeroCartas = mazo.totalCartas();
@@ -138,7 +138,7 @@ public class Juego {
 
     private void distribuirPocimas() {// trabaja con el mazo
         int totalCartas = mazo.totalCartas();
-        int i = 0;
+        int i = 0; //para cortar cuando tenes mas pocimas que cartas
         for (Pocima p : pocimas) {
             if (i < totalCartas) {
                 Carta c = mazo.getCartaJugable();

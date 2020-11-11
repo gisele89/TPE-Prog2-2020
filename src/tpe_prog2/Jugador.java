@@ -8,7 +8,6 @@ import java.util.Collections;
 
 public class Jugador {
     private String nombre;
-    //private ArrayList<Carta> cartas;
     private Mazo mazo;
     private Estrategia estrategia;
 
@@ -33,20 +32,11 @@ public class Jugador {
 
     public Mazo getMazo() {
         return mazo;
-    }
+    }//preguntar copia
 
-    public void setMazo(Mazo mazo) {
+    public void setMazo(Mazo mazo) { //porque se setea el mazo chico en el repartir carta
         this.mazo = mazo;
     }
-    /*public Carta getCartaJugable() {
-        return mazo.getCartaJugable();
-    }*/
-
-
-
-    /*public void addCarta(Carta c) {
-        mazo.addCarta(c);
-    }*/
 
     public String seleccionarAtributo() {
         if (this.mazo.tieneCartasDisponibles()) {

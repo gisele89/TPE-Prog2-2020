@@ -21,24 +21,11 @@ public class Mazo {
         cartas = new ArrayList<Carta>();
     }
 
-    public ArrayList<Carta> getCartas() {
-        ArrayList<Carta> cartasCopia = (ArrayList<Carta>) cartas.clone();
-        return cartasCopia;
-    }
-
-    public Carta getCarta(String nombreCarta) {
-        for (Carta c : cartas) {
-            if (c.getNombre().equals(nombreCarta)) {
-                return c;
-            }
-        }
-        return null;
-    }
 
     public void addCarta(Carta c) {
         if (cartas.isEmpty()) {
             cartas.add(c);
-        } else {
+        } else {//se verifican las cartas en add en vez de en el anterior verificarcartas, se llama en cargar mazo
             Carta primerCarta = cartas.get(0);
             if (c.verificarCualidades(primerCarta)) {
                 cartas.add(c);
@@ -58,7 +45,7 @@ public class Mazo {
         Collections.rotate(cartas, -1);
     }
 
-    public Carta devolverCarta() { //adaptar para repartir en los dos mazos
+    public Carta devolverCarta() {
         Carta primerCarta = cartas.get(0);
         cartas.remove(0);
         return primerCarta;
@@ -72,47 +59,6 @@ public class Mazo {
         Random random = new Random();
         Collections.shuffle(cartas, random);
     }
-
-
-    public ArrayList<Jugador> repartirCartas(ArrayList<Jugador> jugadores) {
-        ArrayList<Jugador> jugadoresConMazo = (ArrayList<Jugador>) jugadores.clone();
-        boolean mazoImpar = this.esImpar();
-        int cantJugadores = jugadoresConMazo.size();
-        int numeroCartas = cartas.size();
-        for (int i = 0; i < numeroCartas; i++) {
-            int jugadorActual = i % cantJugadores;
-            if (mazoImpar && i == numeroCartas - 1) {
-                jugadorActual = 0;
-            }
-            Jugador jugador = jugadoresConMazo.get(jugadorActual);
-            Carta carta = cartas.get(i);
-            if (jugador != null) {
-                jugador.getMazo().addCarta(carta);
-            }
-        }
-        return jugadoresConMazo;
-    }
-
-   /* public void repartirCartas() {
-        ArrayList<Mazo> mazos = new ArrayList<Mazo>();
-        mazos.add(new Mazo());
-        mazos.add(new Mazo());
-
-        boolean mazoImpar = this.esImpar();
-        int cantJugadores = 2;
-        int numeroCartas = cartas.size();
-        for (int i = 0; i < numeroCartas; i++) {
-            int mazoActual = i % cantJugadores;
-            if (mazoImpar && i == numeroCartas - 1) {
-                mazoActual = 0;
-            }
-            Carta carta = cartas.get(i);
-            Mazo mazo = mazos.get(mazoActual);
-            mazo.addCarta(carta);
-
-        }
-        return mazos;
-    }*/
 
     public boolean esImpar() {
         int modulo = 2;
