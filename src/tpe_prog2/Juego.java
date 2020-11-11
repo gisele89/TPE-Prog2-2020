@@ -115,7 +115,7 @@ public class Juego {
             Carta c = m1.getCartaJugable();
             Carta c2 = m2.getCartaJugable();
 
-            int resultado = c.esCartaMayor(c2, atributoJugable);
+            int resultado = c.compareTo(c2, atributoJugable);//cambiar c.compareTo(c2, atributoJugable)
             if (resultado == 0) {
                 m1.pasarCartaAlFinal();
                 m2.pasarCartaAlFinal();
@@ -152,14 +152,10 @@ public class Juego {
     public void imprimirResultadoRonda(Jugador jugadorConTurno, String atributoJugable, Carta c, Carta c2, Jugador jugadorGanador) {
         System.out.println("------- Ronda " + this.getRondas() + " -------");
         System.out.println("El jugador " + jugadorConTurno.getNombre() + " selecciona competir por el atributo " + atributoJugable);
-        System.out.println("La carta de " + this.j1.getNombre() + " es " + c.getNombre() + " con " + atributoJugable + " " + c.getCualidad(atributoJugable).getValor() + imprimirValorPocima(c, atributoJugable));
-        System.out.println("La carta de " + this.j2.getNombre() + " es " + c2.getNombre() + " con " + atributoJugable + " " + c2.getCualidad(atributoJugable).getValor() + imprimirValorPocima(c2, atributoJugable));
+        System.out.println("La carta de " + this.j1.getNombre() + c.toString(atributoJugable));
+        System.out.println("La carta de " + this.j2.getNombre() + c2.toString(atributoJugable));
         System.out.println("Gana la ronda " + jugadorGanador.getNombre());
         System.out.println(this.j1.getNombre() + " posee ahora " + j1.getMazo().totalCartas() + " cartas y " + this.j2.getNombre() + " posee ahora " + j2.getMazo().totalCartas() + " cartas");
-    }
-
-    private String imprimirValorPocima(Carta c, String atributoJugable) {//mejora llama a tostring de carta
-        return c.toString() + " valor resultante " + c.getValorCualidad(atributoJugable);
     }
 
     private void imprimirGanador() {

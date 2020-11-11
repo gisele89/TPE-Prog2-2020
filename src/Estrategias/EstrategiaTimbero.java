@@ -6,19 +6,14 @@ import tpe_prog2.Carta;
 import java.util.ArrayList;
 
 public class EstrategiaTimbero implements Estrategia {
-    private ArrayList<String> nombresCualidades;
 
     public EstrategiaTimbero() {
-        nombresCualidades = new ArrayList<String>();
-    }
 
-    public void addNombreCualidad(String s) {
-        nombresCualidades.add(s);
     }
 
     @Override
     public Atributo elegirAtributo(Carta c) {
-        int rand = (int) (Math.random() * nombresCualidades.size());
-        return c.getCualidad(nombresCualidades.get(rand));
+        int rand = (int) (Math.random() * c.getNombresCualidades().size());// traes la lista de nombres y en base a ese tamaño hago el rand en vez de recibir el arreglo de strings que lo tenga la carta
+        return c.getCualidad(c.getNombresCualidades().get(rand));
     }
 }
