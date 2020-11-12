@@ -34,7 +34,6 @@ public class Atributo implements Comparable<Atributo> {
         Atributo atributo = (Atributo) o;
         return nombre.equals(atributo.getNombre());
     }
-
     @Override
     public int compareTo(Atributo atributo) {
         Double valor1 = this.getValor();

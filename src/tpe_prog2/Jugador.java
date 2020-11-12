@@ -3,9 +3,6 @@ package tpe_prog2;
 import Estrategias.Estrategia;
 import Estrategias.EstrategiaTimbero;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class Jugador {
     private String nombre;
     private Mazo mazo;
@@ -32,9 +29,9 @@ public class Jugador {
 
     public Mazo getMazo() {
         return mazo;
-    }//preguntar copia
+    }
 
-    public void setMazo(Mazo mazo) { //porque se setea el mazo chico en el repartir carta
+    public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
 
@@ -48,22 +45,6 @@ public class Jugador {
         }
         return null;
     }
-
-    /*public boolean tieneCartasDisponibles() {
-        return mazo.tieneCartasDisponibles();
-    }
-
-    public void pasarCartaAlFinal() {
-        mazo.pasarCartaAlFinal();
-    }
-
-    public Carta devolverCarta() {
-        return mazo.devolverCarta();
-    }
-
-    public int totalCartas() {
-        return mazo.totalCartas();
-    }*/
 
     public boolean equals(Object o) {
         Jugador jugador = (Jugador) o;

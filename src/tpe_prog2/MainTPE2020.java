@@ -5,18 +5,6 @@ import Estrategias.EstrategiaObstinado;
 import Estrategias.EstrategiaTimbero;
 import Pocimas.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-
 public class MainTPE2020 {
 
     public static void main(String[] args) {
@@ -26,17 +14,6 @@ public class MainTPE2020 {
         Jugador j1 = new Jugador("Lucrecia");
         Jugador j2 = new Jugador("Gisele");
         EstrategiaTimbero e1 = new EstrategiaTimbero();
-        /*e1.addNombreCualidad("altura");
-        e1.addNombreCualidad("peso");
-        e1.addNombreCualidad("fuerza");
-        e1.addNombreCualidad("peleas ganadas");
-        e1.addNombreCualidad("velocidad");*/
-        e1.addNombreCualidad("Km/h");
-        e1.addNombreCualidad("HP");
-        e1.addNombreCualidad("Cilindros");
-        e1.addNombreCualidad("RPM");
-        e1.addNombreCualidad("Aceleracion 0-100");
-        e1.addNombreCualidad("cm3");
         j1.setEstrategia(e1);
         j2.setEstrategia(new EstrategiaObstinado("RPM"));
         // j2.setEstrategia(new EstrategiaObstinado("fuerza"));//para probar mazo superheroes

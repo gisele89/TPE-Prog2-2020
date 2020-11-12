@@ -21,11 +21,10 @@ public class Mazo {
         cartas = new ArrayList<Carta>();
     }
 
-
     public void addCarta(Carta c) {
         if (cartas.isEmpty()) {
             cartas.add(c);
-        } else {//se verifican las cartas en add en vez de en el anterior verificarcartas, se llama en cargar mazo
+        } else {
             Carta primerCarta = cartas.get(0);
             if (c.verificarCualidades(primerCarta)) {
                 cartas.add(c);
@@ -89,5 +88,4 @@ public class Mazo {
         }
         return mazo;
     }
-
 }

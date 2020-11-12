@@ -18,7 +18,7 @@ public class Juego {
         this.nombre = nombre;
         this.maximoRondas = maximoRondas;
         this.rondas = 0;
-        pocimas = new ArrayList<Pocima>();
+        pocimas = new ArrayList<>();
 
     }
 
@@ -34,57 +34,38 @@ public class Juego {
         this.j2 = j2;
     }
 
-    public Mazo getMazo() {
-        return mazo;
-    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public int getMaximoRondas() {
-        return maximoRondas;
-    }
 
     public void addPocima(Pocima p) {
         pocimas.add(p);
     }
 
-    public int contarRondas() {
+    public void contarRondas() {
         rondas++;
-        return rondas;
     }
 
 
     public boolean terminoJuego() {
-        if (maximoRondas == rondas || !this.JugadoresTienenCartas()) {
-            return true;
-        }
-        return false;
+        return maximoRondas == rondas || !this.JugadoresTienenCartas();
     }
 
     public boolean JugadoresTienenCartas() {
-        if (!j1.getMazo().tieneCartasDisponibles() || !j2.getMazo().tieneCartasDisponibles()) {
-            return false;
-        }
-        return true;
+        return j1.getMazo().tieneCartasDisponibles() && j2.getMazo().tieneCartasDisponibles();
     }
 
     public void jugar() {
         this.distribuirPocimas();
         mazo.mezclarCartas();
-       /* ArrayList<Jugador> jugadoresConMazo = new ArrayList<Jugador>();
-        jugadoresConMazo.add(j1);
-        jugadoresConMazo.add(j2);
-        mazo.repartirCartas(jugadoresConMazo);*/
         this.repartirCartas();
         this.arrancarRonda();
     }
 
-    //repartir que genere 2 mazos y reparta las cartas del mazo original y luego asigne cada mazo a los jugadores, en el mazo un metodo remover carta que saque la primera
-
     public void repartirCartas() {
-        ArrayList<Mazo> mazos = new ArrayList<Mazo>();
+        ArrayList<Mazo> mazos = new ArrayList<>();
         mazos.add(new Mazo());
         mazos.add(new Mazo());
 

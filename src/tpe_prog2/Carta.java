@@ -14,7 +14,7 @@ public class Carta {
         this.nombre = nombre;
         cualidades = new ArrayList<>();
         this.pocima = null;
-        nombresCualidades = this.cargarNombres();
+        nombresCualidades = new ArrayList<>();
     }
 
     public boolean tienePocima() {
@@ -38,7 +38,6 @@ public class Carta {
         return nombre;
     }
 
-    //este metodo ya no iria
     public Atributo getCualidad(String nombreAtributo) {
         for (Atributo a : cualidades) {
             if (a.getNombre().equals(nombreAtributo)) {
@@ -87,50 +86,20 @@ public class Carta {
 
     public void addCualidad(Atributo c) {
         cualidades.add(c);
+        nombresCualidades.add(c.getNombre());
     }
 
-    public ArrayList<String> cargarNombres() {
-        ArrayList<String> nombresAux = new ArrayList<String>();
-        String nombre;
-        for (Atributo a : cualidades) {
-            nombre = a.getNombre();
-            nombresAux.add(nombre);
-        }
-        return nombresAux;
-    }
-
-    /*
-     El Atributo no es comparable, quedaria mejor para comparar en juego atributo con atributo.
-     */
     public int compareTo(Carta c, String nombreAtributoJugable) {
-        /*Atributo atr1 = this.getCualidad(nombreAtributoJugable);
-        Atributo atr2 = c.getCualidad(nombreAtributoJugable);
-        return atr1.compareTo(atr2);*/
         Double valor1 = this.getValorCualidad(nombreAtributoJugable);
         Double valor2 = c.getValorCualidad(nombreAtributoJugable);
         return valor1.compareTo(valor2);
     }
 
-    public Atributo obtenerMejorCualidad() {
-
-        Atributo atributoMayor = cualidades.get(0);
-        for (Atributo a : cualidades) {
-            if (a.getValor() > atributoMayor.getValor()) {
-                atributoMayor = a;
-            }
-        }
-        return atributoMayor;
-    }
-
     public String toString(String atributoJugable) {
         String resultado = "";
-        for (Atributo a : cualidades) {
-            if (a.getNombre().equals(atributoJugable)) {
-                resultado = " es " + this.getNombre() + " con " + atributoJugable + " " + this.getCualidad(atributoJugable).getValor();
-                if (this.tienePocima()) {
-                    resultado = resultado + ", se aplicó pocima " + this.getPocima().getNombre() + " valor resultante " + this.getValorCualidad(atributoJugable);
-                }
-            }
+        resultado = " es " + this.getNombre() + " con " + atributoJugable + " " + this.getCualidad(atributoJugable).getValor();
+        if (this.tienePocima()) {
+            resultado = resultado + ", se aplicó pocima " + this.getPocima().getNombre() + " valor resultante " + this.getValorCualidad(atributoJugable);
         }
         return resultado;
     }
