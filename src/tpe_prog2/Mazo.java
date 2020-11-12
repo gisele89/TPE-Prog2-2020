@@ -1,7 +1,5 @@
 package tpe_prog2;
 
-import Pocimas.Pocima;
-
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;

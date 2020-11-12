@@ -96,7 +96,7 @@ public class Juego {
             Carta c = m1.getCartaJugable();
             Carta c2 = m2.getCartaJugable();
 
-            int resultado = c.compareTo(c2, atributoJugable);//cambiar c.compareTo(c2, atributoJugable)
+            int resultado = c.compareTo(c2, atributoJugable);
             if (resultado == 0) {
                 m1.pasarCartaAlFinal();
                 m2.pasarCartaAlFinal();
@@ -117,9 +117,9 @@ public class Juego {
         this.imprimirGanador();
     }
 
-    private void distribuirPocimas() {// trabaja con el mazo
+    private void distribuirPocimas() {
         int totalCartas = mazo.totalCartas();
-        int i = 0; //para cortar cuando tenes mas pocimas que cartas
+        int i = 0;
         for (Pocima p : pocimas) {
             if (i < totalCartas) {
                 Carta c = mazo.getCartaJugable();
