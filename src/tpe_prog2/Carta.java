@@ -7,14 +7,12 @@ import java.util.ArrayList;
 public class Carta {
     private String nombre;
     private ArrayList<Atributo> cualidades;
-    private ArrayList<String> nombresCualidades;
     private Pocima pocima;
 
     public Carta(String nombre) {
         this.nombre = nombre;
         cualidades = new ArrayList<>();
         this.pocima = null;
-        nombresCualidades = new ArrayList<>();
     }
 
     public boolean tienePocima() {
@@ -25,9 +23,13 @@ public class Carta {
         return pocima;
     }
 
+
     public ArrayList<String> getNombresCualidades() {
-        ArrayList<String> copiaNombres = (ArrayList<String>) nombresCualidades.clone();
-        return copiaNombres;
+        ArrayList<String> nombres = new ArrayList<String>();
+        for (Atributo a:cualidades) {
+            nombres.add(a.getNombre());
+        }
+        return nombres;
     }
 
     public void setPocima(Pocima pocima) {
@@ -86,10 +88,11 @@ public class Carta {
 
     public void addCualidad(Atributo c) {
         cualidades.add(c);
-        nombresCualidades.add(c.getNombre());
     }
 
     public int compareTo(Carta c, String nombreAtributoJugable) {
+       // Atributo valor1 = this.getValorCualidad(nombreAtributoJugable);
+       // Atributo valor2 = c.getValorCualidad(nombreAtributoJugable);
         Double valor1 = this.getValorCualidad(nombreAtributoJugable);
         Double valor2 = c.getValorCualidad(nombreAtributoJugable);
         return valor1.compareTo(valor2);
@@ -97,7 +100,7 @@ public class Carta {
 
     public String toString(String atributoJugable) {
         String resultado = "";
-        resultado = " es " + this.getNombre() + " con " + atributoJugable + " " + this.getCualidad(atributoJugable).getValor();
+        resultado = " es " + this.getNombre() + " con " + atributoJugable + " " + this.getOriginalValue(atributoJugable);
         if (this.tienePocima()) {
             resultado = resultado + ", se aplicó pocima " + this.getPocima().getNombre() + " valor resultante " + this.getValorCualidad(atributoJugable);
         }
@@ -107,5 +110,14 @@ public class Carta {
     public boolean equals(Object o) {
         Carta carta = (Carta) o;
         return nombre.equals(carta.getNombre());
+    }
+
+    private Double getOriginalValue(String nombreAtributo) {
+        for (Atributo a : cualidades) {
+            if (a.getNombre().equals(nombreAtributo)) {
+                return a.getValor();
+            }
+        }
+        return 0.0;
     }
 }
