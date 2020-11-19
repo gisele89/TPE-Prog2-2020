@@ -26,7 +26,7 @@ public class Carta {
 
     public ArrayList<String> getNombresCualidades() {
         ArrayList<String> nombres = new ArrayList<String>();
-        for (Atributo a:cualidades) {
+        for (Atributo a : cualidades) {
             nombres.add(a.getNombre());
         }
         return nombres;
@@ -49,7 +49,22 @@ public class Carta {
         return null;
     }
 
-    public double getValorCualidad(String nombreAtributo) {
+    public Atributo getCualidadConPocima(String nombreAtributo) {
+        Atributo atr = null;
+        Double valor = 0.0;
+        for (Atributo a : cualidades) {
+            if (a.getNombre().equals(nombreAtributo)) {
+                valor = a.getValor();
+                if (tienePocima()) {
+                    valor = pocima.aplicar(a);
+                }
+                atr = new Atributo(a.getNombre(), valor);
+                return atr;
+            }
+        }
+        return null;
+    }
+   /* public double getValorCualidad(String nombreAtributo) {
         for (Atributo a : cualidades) {
             if (a.getNombre().equals(nombreAtributo)) {
                 if (tienePocima()) {
@@ -59,7 +74,7 @@ public class Carta {
             }
         }
         return 0.0;
-    }
+    }*/
 
     public int totalCualidades() {
         return cualidades.size();
@@ -91,18 +106,18 @@ public class Carta {
     }
 
     public int compareTo(Carta c, String nombreAtributoJugable) {
-       // Atributo valor1 = this.getValorCualidad(nombreAtributoJugable);
-       // Atributo valor2 = c.getValorCualidad(nombreAtributoJugable);
-        Double valor1 = this.getValorCualidad(nombreAtributoJugable);
-        Double valor2 = c.getValorCualidad(nombreAtributoJugable);
-        return valor1.compareTo(valor2);
+        Atributo atr1 = this.getCualidadConPocima(nombreAtributoJugable);
+        Atributo atr2 = c.getCualidadConPocima(nombreAtributoJugable);
+        //Double valor1 = this.getValorCualidad(nombreAtributoJugable);
+        //Double valor2 = c.getValorCualidad(nombreAtributoJugable);
+        return atr1.compareTo(atr2);
     }
 
     public String toString(String atributoJugable) {
         String resultado = "";
-        resultado = " es " + this.getNombre() + " con " + atributoJugable + " " + this.getOriginalValue(atributoJugable);
+        resultado = " es " + this.getNombre() + " con " + atributoJugable + " " + this.getCualidad(atributoJugable).getValor();
         if (this.tienePocima()) {
-            resultado = resultado + ", se aplicó pocima " + this.getPocima().getNombre() + " valor resultante " + this.getValorCualidad(atributoJugable);
+            resultado = resultado + ", se aplicó pocima " + this.getPocima().getNombre() + " valor resultante " + this.getCualidadConPocima(atributoJugable).getValor();
         }
         return resultado;
     }
@@ -112,12 +127,4 @@ public class Carta {
         return nombre.equals(carta.getNombre());
     }
 
-    private Double getOriginalValue(String nombreAtributo) {
-        for (Atributo a : cualidades) {
-            if (a.getNombre().equals(nombreAtributo)) {
-                return a.getValor();
-            }
-        }
-        return 0.0;
-    }
 }

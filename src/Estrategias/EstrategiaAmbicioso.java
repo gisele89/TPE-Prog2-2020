@@ -16,7 +16,7 @@ public class EstrategiaAmbicioso implements Estrategia {
         Double valorActual;
         String nombre = "";
         for (String s : auxNombres) {
-            valorActual = c.getValorCualidad(s);
+            valorActual = c.getCualidadConPocima(s).getValor();
             if (valorMayor == null || valorMayor < valorActual) {
                 valorMayor = valorActual;
                 nombre = s;
